@@ -1,0 +1,24 @@
+.tab-trapezoid {
+  position: relative;
+  background: transparent;
+  isolation: isolate;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: transparent;
+    clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+    border-radius: 0;
+    transition: background 0.2s;
+  }
+
+  &.active::before {
+    background: white;
+  }
+
+  &:hover:not(.active)::before {
+    background: rgba(255, 255, 255, 0.4);
+  }
+}

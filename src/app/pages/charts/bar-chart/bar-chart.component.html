@@ -1,0 +1,18 @@
+<div class="mb-6">
+  <h1 class="text-2xl font-extrabold text-gray-900">Gráfico de Barras</h1>
+  <p class="text-xs text-gray-400 mt-1">Comparações por categoria e período</p>
+</div>
+
+<div class="grid grid-cols-1 gap-5">
+  <div class="bg-white rounded-2xl p-5">
+    <p class="text-sm font-semibold text-gray-900 mb-1">Vendas vs Reembolsos</p>
+    <p class="text-[10px] text-gray-400 mb-4">Volume mensal</p>
+    <apx-chart [series]="series1" [chart]="chart1" [plotOptions]="plotOptions" [colors]="colors" [xaxis]="months" [yaxis]="yaxis" [grid]="grid" [tooltip]="tooltip" [dataLabels]="dataLabels" [legend]="legend" />
+  </div>
+
+  <div class="bg-white rounded-2xl p-5">
+    <p class="text-sm font-semibold text-gray-900 mb-1">Receita por Etapa do Funil (empilhado)</p>
+    <p class="text-[10px] text-gray-400 mb-4">Atrair → Preparar → Vender</p>
+    <apx-chart [series]="series2" [chart]="chart2" [plotOptions]="plotOptions2" [colors]="colors" [xaxis]="months" [yaxis]="yaxis" [grid]="grid" [tooltip]="tooltip" [dataLabels]="dataLabels" [legend]="legend" />
+  </div>
+</div>

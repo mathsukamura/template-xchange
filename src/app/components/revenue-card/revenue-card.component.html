@@ -1,0 +1,7 @@
+<div class="rounded-2xl border border-gray-border p-4 flex flex-col items-start">
+  <p class="text-xs text-gray-400 font-medium mb-0.5">{{ title() }}</p>
+  <p class="text-2xl font-extrabold text-gray-900 tracking-tight mb-3">{{ value() }}</p>
+  <div class="w-full" [class.h-20]="type() === 'bars'" [class.h-24]="type() === 'donut'">
+    <canvas #chart class="w-full h-full"></canvas>
+  </div>
+</div>

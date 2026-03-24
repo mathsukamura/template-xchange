@@ -1,0 +1,19 @@
+<div class="min-h-screen bg-gray-bg flex">
+  <!-- Sidebar: expandable on hover -->
+  <app-sidebar (expandedChange)="onSidebarExpand($event)" />
+
+  <!-- Main Content Area -->
+  <div
+    class="flex-1 flex flex-col p-4 gap-4 transition-all duration-300"
+    [class.ml-[72px]]="!sidebarExpanded"
+    [class.ml-52]="sidebarExpanded"
+  >
+    <!-- Header: floating on gray -->
+    <app-header />
+
+    <!-- Page Card Container (light gray, not white) -->
+    <div class="bg-gray-card rounded-3xl shadow-sm flex-1 p-8">
+      <router-outlet />
+    </div>
+  </div>
+</div>

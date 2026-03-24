@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@use "tailwindcss";
+
+@theme {
+  --color-lime-accent: #C8FF00;
+  --color-lime-accent-hover: #B8EE00;
+  --color-dark: #1A1A1A;
+  --color-dark-card: #232323;
+  --color-dark-lighter: #2D2D2D;
+  --color-gray-bg: #EBEBEB;
+  --color-gray-card: #F5F5F5;
+  --color-gray-border: #E5E5E5;
+  --font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-family-sans);
+    background-color: var(--color-gray-bg);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}

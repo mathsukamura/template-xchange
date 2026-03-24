@@ -1,0 +1,31 @@
+<div>
+  <!-- Stage Labels -->
+  <div class="flex justify-between mb-3">
+    <div class="flex items-center gap-2">
+      <div class="w-2 h-2 rounded-full bg-lime-accent"></div>
+      <span class="text-xs font-medium text-gray-500">Atrair audiência</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="w-2 h-2 rounded-full bg-teal-400"></div>
+      <span class="text-xs font-medium text-gray-500">Preparar para venda</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="w-2 h-2 rounded-full bg-teal-600"></div>
+      <span class="text-xs font-medium text-gray-500">Vender</span>
+    </div>
+  </div>
+
+  <!-- Canvas Chart -->
+  <div class="relative h-44">
+    <canvas #canvas class="w-full h-full"></canvas>
+  </div>
+
+  <!-- Values Row -->
+  <div class="grid grid-cols-6 gap-2 mt-3">
+    @for (stage of stages; track $index) {
+      <div class="text-center">
+        <p class="text-sm font-bold text-gray-800">{{ stage.value }}</p>
+      </div>
+    }
+  </div>
+</div>

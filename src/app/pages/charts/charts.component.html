@@ -1,0 +1,80 @@
+<!-- Header -->
+<div class="mb-6">
+  <h1 class="text-2xl font-extrabold text-gray-900">Gráficos</h1>
+  <p class="text-xs text-gray-400 mt-1">Visualizações de dados do seu negócio</p>
+</div>
+
+<div class="grid grid-cols-2 gap-5">
+
+  <!-- Area Chart -->
+  <div class="bg-white rounded-2xl p-5">
+    <p class="text-sm font-semibold text-gray-900 mb-1">Receita vs Custos</p>
+    <p class="text-[10px] text-gray-400 mb-4">Evolução mensal</p>
+    <apx-chart
+      [series]="areaSeries"
+      [chart]="areaChart"
+      [stroke]="areaStroke"
+      [fill]="areaFill"
+      [colors]="colors"
+      [xaxis]="months"
+      [yaxis]="yaxis"
+      [grid]="grid"
+      [tooltip]="tooltip"
+      [dataLabels]="dataLabels"
+      [legend]="legend"
+    />
+  </div>
+
+  <!-- Bar Chart -->
+  <div class="bg-white rounded-2xl p-5">
+    <p class="text-sm font-semibold text-gray-900 mb-1">Vendas vs Reembolsos</p>
+    <p class="text-[10px] text-gray-400 mb-4">Por mês</p>
+    <apx-chart
+      [series]="barSeries"
+      [chart]="barChart"
+      [plotOptions]="barPlotOptions"
+      [colors]="colors"
+      [xaxis]="months"
+      [yaxis]="yaxis"
+      [grid]="grid"
+      [tooltip]="tooltip"
+      [dataLabels]="dataLabels"
+      [legend]="legend"
+    />
+  </div>
+
+  <!-- Line Chart -->
+  <div class="bg-white rounded-2xl p-5">
+    <p class="text-sm font-semibold text-gray-900 mb-1">Funil de Conversão</p>
+    <p class="text-[10px] text-gray-400 mb-4">Visitantes → Leads → Clientes</p>
+    <apx-chart
+      [series]="lineSeries"
+      [chart]="lineChart"
+      [stroke]="lineStroke"
+      [colors]="colors"
+      [xaxis]="months"
+      [yaxis]="yaxis"
+      [grid]="grid"
+      [tooltip]="tooltip"
+      [dataLabels]="dataLabels"
+      [legend]="legend"
+    />
+  </div>
+
+  <!-- Donut Chart -->
+  <div class="bg-white rounded-2xl p-5">
+    <p class="text-sm font-semibold text-gray-900 mb-1">Vendas por Categoria</p>
+    <p class="text-[10px] text-gray-400 mb-4">Distribuição percentual</p>
+    <apx-chart
+      [series]="donutSeries"
+      [chart]="donutChart"
+      [labels]="donutLabels"
+      [colors]="donutColors"
+      [legend]="donutLegend"
+      [plotOptions]="donutPlotOptions"
+      [dataLabels]="dataLabels"
+      [tooltip]="tooltip"
+    />
+  </div>
+
+</div>

@@ -1,0 +1,18 @@
+<div class="mb-6">
+  <h1 class="text-2xl font-extrabold text-gray-900">Gráfico Pizza / Donut</h1>
+  <p class="text-xs text-gray-400 mt-1">Distribuição proporcional de dados</p>
+</div>
+
+<div class="grid grid-cols-2 gap-5">
+  <div class="bg-white rounded-2xl p-5">
+    <p class="text-sm font-semibold text-gray-900 mb-1">Vendas por Categoria</p>
+    <p class="text-[10px] text-gray-400 mb-4">Distribuição em donut</p>
+    <apx-chart [series]="donutSeries" [chart]="donutChart" [labels]="donutLabels" [colors]="donutColors" [legend]="legend" [plotOptions]="donutPlotOptions" [dataLabels]="dataLabels" [tooltip]="tooltip" />
+  </div>
+
+  <div class="bg-white rounded-2xl p-5">
+    <p class="text-sm font-semibold text-gray-900 mb-1">Origem do Tráfego</p>
+    <p class="text-[10px] text-gray-400 mb-4">De onde vêm seus visitantes</p>
+    <apx-chart [series]="pieSeries" [chart]="pieChart" [labels]="pieLabels" [colors]="pieColors" [legend]="legend" [dataLabels]="dataLabels" [tooltip]="tooltip" />
+  </div>
+</div>
