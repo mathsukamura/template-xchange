@@ -1,10 +1,10 @@
-<div class="flex h-[calc(100vh-12rem)] gap-4">
+<div class="flex h-[calc(100vh-12rem)] gap-4 min-w-0">
 
   <!-- Sidebar: Lista de contatos -->
-  <div class="w-72 flex-shrink-0 bg-white rounded-2xl overflow-hidden flex flex-col">
+  <div class="w-64 flex-shrink-0 bg-white dark:bg-dark-lighter rounded-2xl overflow-hidden flex flex-col">
     <!-- Header -->
-    <div class="p-4 border-b border-gray-100">
-      <h2 class="text-lg font-extrabold text-gray-900 mb-3">Mensagens</h2>
+    <div class="p-4 border-b border-gray-100 dark:border-dark-card">
+      <h2 class="text-lg font-extrabold text-gray-900 dark:text-white mb-3">Mensagens</h2>
       <div class="relative">
         <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
@@ -12,7 +12,7 @@
         <input
           type="text"
           placeholder="Buscar conversa..."
-          class="w-full pl-9 pr-3 py-2 text-sm bg-gray-50 rounded-xl border-none focus:outline-none focus:ring-2 focus:ring-lime-accent/30"
+          class="w-full pl-9 pr-3 py-2 text-sm bg-gray-50 dark:bg-dark-card dark:text-gray-200 rounded-xl border-none focus:outline-none focus:ring-2 focus:ring-lime-accent/30"
           [(ngModel)]="search"
         />
       </div>
@@ -23,14 +23,15 @@
       @for (user of filteredUsers; track user.id) {
         <button
           (click)="selectUser(user)"
-          class="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gray-50 transition-colors cursor-pointer"
+          class="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gray-50 dark:hover:bg-dark-card/50 transition-colors cursor-pointer"
           [class.bg-gray-50]="selectedUser?.id === user.id"
+          [class.selected-user]="selectedUser?.id === user.id"
         >
-          <div class="w-10 h-10 rounded-full bg-dark flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+          <div class="w-10 h-10 rounded-full bg-dark dark:bg-lime-accent/20 flex items-center justify-center text-white dark:text-lime-accent text-xs font-bold flex-shrink-0">
             {{ user.initials }}
           </div>
           <div class="min-w-0 flex-1">
-            <p class="text-sm font-semibold text-gray-900 truncate">{{ user.name }}</p>
+            <p class="text-sm font-semibold text-gray-900 dark:text-white truncate">{{ user.name }}</p>
             <p class="text-[11px] text-gray-400 truncate">{{ user.lastMessage }}</p>
           </div>
         </button>
@@ -40,25 +41,25 @@
 
   <!-- Chat Area -->
   @if (selectedUser) {
-    <div class="flex-1 bg-white rounded-2xl overflow-hidden flex flex-col">
+    <div class="flex-1 bg-white dark:bg-dark-lighter rounded-2xl overflow-hidden flex flex-col">
       <!-- Chat Header -->
-      <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+      <div class="px-6 py-4 border-b border-gray-100 dark:border-dark-card flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-dark flex items-center justify-center text-white text-xs font-bold">
+          <div class="w-10 h-10 rounded-full bg-dark dark:bg-lime-accent/20 flex items-center justify-center text-white dark:text-lime-accent text-xs font-bold">
             {{ selectedUser.initials }}
           </div>
           <div>
-            <p class="text-sm font-bold text-gray-900">{{ selectedUser.name }}</p>
+            <p class="text-sm font-bold text-gray-900 dark:text-white">{{ selectedUser.name }}</p>
             <p class="text-[11px] text-gray-400">{{ selectedUser.role }}</p>
           </div>
         </div>
         <div class="flex items-center gap-2">
-          <button class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors cursor-pointer">
+          <button class="w-9 h-9 rounded-xl bg-gray-50 dark:bg-dark-card flex items-center justify-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-dark transition-colors cursor-pointer">
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
             </svg>
           </button>
-          <button class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors cursor-pointer">
+          <button class="w-9 h-9 rounded-xl bg-gray-50 dark:bg-dark-card flex items-center justify-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-dark transition-colors cursor-pointer">
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/>
             </svg>
@@ -73,12 +74,12 @@
             <div
               class="max-w-[70%] px-4 py-2.5 text-sm"
               [class]="msg.sender === 'Você'
-                ? 'bg-dark text-white rounded-2xl rounded-br-sm'
-                : 'bg-gray-100 text-gray-800 rounded-2xl rounded-bl-sm'"
+                ? 'bg-dark dark:bg-white text-white dark:text-gray-900 rounded-2xl rounded-br-sm'
+                : 'bg-gray-100 dark:bg-dark-card text-gray-800 dark:text-gray-200 rounded-2xl rounded-bl-sm'"
             >
               <p>{{ msg.text }}</p>
               <p class="text-[10px] mt-1"
-                [class]="msg.sender === 'Você' ? 'text-gray-400 text-right' : 'text-gray-400'"
+                [class]="msg.sender === 'Você' ? 'text-gray-400 dark:text-gray-500 text-right' : 'text-gray-400'"
               >{{ msg.time }}</p>
             </div>
           </div>
@@ -86,12 +87,12 @@
       </div>
 
       <!-- Input -->
-      <div class="px-4 py-3 border-t border-gray-100">
+      <div class="px-4 py-3 border-t border-gray-100 dark:border-dark-card">
         <form class="flex gap-2" (ngSubmit)="sendMessage()">
           <input
             type="text"
             placeholder="Digite sua mensagem..."
-            class="flex-1 px-4 py-2.5 text-sm bg-gray-50 rounded-xl border-none focus:outline-none focus:ring-2 focus:ring-lime-accent/30"
+            class="flex-1 px-4 py-2.5 text-sm bg-gray-50 dark:bg-dark-card dark:text-gray-200 rounded-xl border-none focus:outline-none focus:ring-2 focus:ring-lime-accent/30"
             [(ngModel)]="newMessage"
             name="newMessage"
           />
@@ -103,15 +104,15 @@
     </div>
   } @else {
     <!-- Empty State -->
-    <div class="flex-1 bg-white rounded-2xl flex items-center justify-center">
+    <div class="flex-1 bg-white dark:bg-dark-lighter rounded-2xl flex items-center justify-center">
       <div class="text-center">
-        <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4">
+        <div class="w-16 h-16 rounded-full bg-gray-100 dark:bg-dark-card flex items-center justify-center mx-auto mb-4">
           <svg class="w-7 h-7 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/>
           </svg>
         </div>
-        <p class="text-sm font-semibold text-gray-900 mb-1">Suas mensagens</p>
-        <p class="text-xs text-gray-400">Selecione uma conversa para começar.</p>
+        <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Suas mensagens</p>
+        <p class="text-xs text-gray-400">Selecione uma conversa para comecar.</p>
       </div>
     </div>
   }

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, effect } from '@angular/core';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ApexChart, ApexDataLabels, ApexGrid, ApexLegend, ApexStroke, ApexTooltip, ApexXAxis, ApexYAxis } from 'ng-apexcharts';
+import { ThemeService } from '../../../services/theme.service';
 
 @Component({
   selector: 'app-line-chart',
@@ -9,13 +10,25 @@ import { ApexChart, ApexDataLabels, ApexGrid, ApexLegend, ApexStroke, ApexToolti
   styleUrl: './line-chart.component.scss'
 })
 export class LineChartComponent {
+  private theme = inject(ThemeService);
+
   colors = ['#C8FF00', '#3CB4A0', '#1A7A6A'];
-  months: ApexXAxis = { categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], labels: { style: { colors: '#9CA3AF', fontSize: '11px' } }, axisBorder: { show: false }, axisTicks: { show: false } };
-  yaxis: ApexYAxis = { labels: { style: { colors: '#9CA3AF', fontSize: '11px' } } };
-  grid: ApexGrid = { borderColor: '#F3F4F6', strokeDashArray: 4, xaxis: { lines: { show: false } } };
+  months!: ApexXAxis;
+  yaxis!: ApexYAxis;
+  grid!: ApexGrid;
   tooltip: ApexTooltip = { theme: 'dark' };
   dataLabels: ApexDataLabels = { enabled: false };
-  legend: ApexLegend = { position: 'top', horizontalAlign: 'right', labels: { colors: '#6B7280' }, fontSize: '12px', markers: { width: 8, height: 8, radius: 4 } };
+  legend!: ApexLegend;
+
+  constructor() {
+    effect(() => {
+      const dark = this.theme.isDark();
+      this.months = { categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], labels: { style: { colors: '#9CA3AF', fontSize: '11px' } }, axisBorder: { show: false }, axisTicks: { show: false } };
+      this.yaxis = { labels: { style: { colors: '#9CA3AF', fontSize: '11px' } } };
+      this.grid = { borderColor: dark ? '#2D2D2D' : '#F3F4F6', strokeDashArray: 4, xaxis: { lines: { show: false } } };
+      this.legend = { position: 'top', horizontalAlign: 'right', labels: { colors: dark ? '#9CA3AF' : '#6B7280' }, fontSize: '12px', markers: { width: 8, height: 8, radius: 4 } };
+    });
+  }
 
   series1 = [
     { name: 'Visitantes', data: [4200, 5100, 4800, 6200, 5900, 7100, 6500, 8200, 7800, 9400, 8200, 10800] },
@@ -26,7 +39,7 @@ export class LineChartComponent {
   stroke1: ApexStroke = { curve: 'smooth', width: 3 };
 
   series2 = [
-    { name: 'Ticket Médio', data: [120, 135, 128, 142, 138, 155, 148, 160, 152, 158, 161, 163] },
+    { name: 'Ticket Medio', data: [120, 135, 128, 142, 138, 155, 148, 160, 152, 158, 161, 163] },
   ];
   chart2: ApexChart = { type: 'line', height: 350, toolbar: { show: false } };
   stroke2: ApexStroke = { curve: 'straight', width: 2, dashArray: [0] };

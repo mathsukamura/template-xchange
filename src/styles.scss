@@ -1,5 +1,7 @@
 @use "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-lime-accent: #C8FF00;
   --color-lime-accent-hover: #B8EE00;
@@ -19,5 +21,9 @@
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  .dark body {
+    background-color: var(--color-dark);
   }
 }

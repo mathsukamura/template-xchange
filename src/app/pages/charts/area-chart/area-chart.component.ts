@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, effect } from '@angular/core';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ApexChart, ApexDataLabels, ApexFill, ApexGrid, ApexLegend, ApexStroke, ApexTooltip, ApexXAxis, ApexYAxis } from 'ng-apexcharts';
+import { ThemeService } from '../../../services/theme.service';
 
 @Component({
   selector: 'app-area-chart',
@@ -9,15 +10,27 @@ import { ApexChart, ApexDataLabels, ApexFill, ApexGrid, ApexLegend, ApexStroke, 
   styleUrl: './area-chart.component.scss'
 })
 export class AreaChartComponent {
+  private theme = inject(ThemeService);
+
   colors = ['#C8FF00', '#3CB4A0', '#1A7A6A'];
-  months: ApexXAxis = { categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], labels: { style: { colors: '#9CA3AF', fontSize: '11px' } }, axisBorder: { show: false }, axisTicks: { show: false } };
-  yaxis: ApexYAxis = { labels: { style: { colors: '#9CA3AF', fontSize: '11px' } } };
-  grid: ApexGrid = { borderColor: '#F3F4F6', strokeDashArray: 4, xaxis: { lines: { show: false } } };
+  months!: ApexXAxis;
+  yaxis!: ApexYAxis;
+  grid!: ApexGrid;
   tooltip: ApexTooltip = { theme: 'dark' };
   dataLabels: ApexDataLabels = { enabled: false };
-  legend: ApexLegend = { position: 'top', horizontalAlign: 'right', labels: { colors: '#6B7280' }, fontSize: '12px', markers: { width: 8, height: 8, radius: 4 } };
+  legend!: ApexLegend;
   stroke: ApexStroke = { curve: 'smooth', width: 2 };
   fill: ApexFill = { type: 'gradient', gradient: { shadeIntensity: 1, opacityFrom: 0.4, opacityTo: 0.05, stops: [0, 100] } };
+
+  constructor() {
+    effect(() => {
+      const dark = this.theme.isDark();
+      this.months = { categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], labels: { style: { colors: '#9CA3AF', fontSize: '11px' } }, axisBorder: { show: false }, axisTicks: { show: false } };
+      this.yaxis = { labels: { style: { colors: '#9CA3AF', fontSize: '11px' } } };
+      this.grid = { borderColor: dark ? '#2D2D2D' : '#F3F4F6', strokeDashArray: 4, xaxis: { lines: { show: false } } };
+      this.legend = { position: 'top', horizontalAlign: 'right', labels: { colors: dark ? '#9CA3AF' : '#6B7280' }, fontSize: '12px', markers: { width: 8, height: 8, radius: 4 } };
+    });
+  }
 
   series1 = [
     { name: 'Receita', data: [18200, 21500, 19800, 24300, 22100, 27900, 25000, 29800, 31200, 28500, 33000, 35400] },

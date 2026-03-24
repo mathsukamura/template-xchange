@@ -22,3 +22,15 @@
     background: rgba(255, 255, 255, 0.4);
   }
 }
+
+:host-context(.dark) {
+  .tab-trapezoid {
+    &.active::before {
+      background: #2D2D2D;
+    }
+
+    &:hover:not(.active)::before {
+      background: rgba(45, 45, 45, 0.6);
+    }
+  }
+}

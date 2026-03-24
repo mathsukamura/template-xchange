@@ -1,5 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +9,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  theme = inject(ThemeService);
+
   tabs = [
-    { label: 'Visão geral', route: '/dashboard' },
+    { label: 'Visao geral', route: '/dashboard' },
     { label: 'Funis de vendas', route: '/funnels' },
     { label: 'Contatos', route: '/contacts' },
   ];

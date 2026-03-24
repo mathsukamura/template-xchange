@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, effect } from '@angular/core';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import {
   ApexChart,
@@ -12,6 +12,7 @@ import {
   ApexXAxis,
   ApexYAxis,
 } from 'ng-apexcharts';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-charts',
@@ -20,13 +21,35 @@ import {
   styleUrl: './charts.component.scss'
 })
 export class ChartsComponent {
+  private theme = inject(ThemeService);
+
   colors = ['#C8FF00', '#3CB4A0', '#1A7A6A'];
-  months: ApexXAxis = { categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], labels: { style: { colors: '#9CA3AF', fontSize: '11px' } }, axisBorder: { show: false }, axisTicks: { show: false } };
-  yaxis: ApexYAxis = { labels: { style: { colors: '#9CA3AF', fontSize: '11px' } } };
-  grid: ApexGrid = { borderColor: '#F3F4F6', strokeDashArray: 4, xaxis: { lines: { show: false } } };
+  months!: ApexXAxis;
+  yaxis!: ApexYAxis;
+  grid!: ApexGrid;
   tooltip: ApexTooltip = { theme: 'dark' };
   dataLabels: ApexDataLabels = { enabled: false };
-  legend: ApexLegend = { position: 'top', horizontalAlign: 'right', labels: { colors: '#6B7280' }, fontSize: '12px', markers: { width: 8, height: 8, radius: 4 } };
+  legend!: ApexLegend;
+  donutColors!: string[];
+  donutLegend!: ApexLegend;
+  donutPlotOptions!: ApexPlotOptions;
+
+  constructor() {
+    effect(() => {
+      const dark = this.theme.isDark();
+      const gridColor = dark ? '#2D2D2D' : '#F3F4F6';
+      const legendColor = dark ? '#9CA3AF' : '#6B7280';
+      const textColor = dark ? '#E5E5E5' : '#1A1A1A';
+
+      this.months = { categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], labels: { style: { colors: '#9CA3AF', fontSize: '11px' } }, axisBorder: { show: false }, axisTicks: { show: false } };
+      this.yaxis = { labels: { style: { colors: '#9CA3AF', fontSize: '11px' } } };
+      this.grid = { borderColor: gridColor, strokeDashArray: 4, xaxis: { lines: { show: false } } };
+      this.legend = { position: 'top', horizontalAlign: 'right', labels: { colors: legendColor }, fontSize: '12px', markers: { width: 8, height: 8, radius: 4 } };
+      this.donutColors = ['#C8FF00', '#3CB4A0', '#1A7A6A', dark ? '#6B7280' : '#1A1A1A'];
+      this.donutLegend = { position: 'bottom', labels: { colors: legendColor }, fontSize: '12px' };
+      this.donutPlotOptions = { pie: { donut: { size: '70%', labels: { show: true, total: { show: true, label: 'Total', fontSize: '14px', fontWeight: '700', color: textColor } } } } };
+    });
+  }
 
   // Area
   areaSeries = [
@@ -58,7 +81,4 @@ export class ChartsComponent {
   donutSeries = [42, 28, 18, 12];
   donutChart: ApexChart = { type: 'donut', height: 320 };
   donutLabels = ['Curso online', 'Mentoria', 'Template', 'E-book'];
-  donutColors = ['#C8FF00', '#3CB4A0', '#1A7A6A', '#1A1A1A'];
-  donutLegend: ApexLegend = { position: 'bottom', labels: { colors: '#6B7280' }, fontSize: '12px' };
-  donutPlotOptions: ApexPlotOptions = { pie: { donut: { size: '70%', labels: { show: true, total: { show: true, label: 'Total', fontSize: '14px', fontWeight: '700', color: '#1A1A1A' } } } } };
 }

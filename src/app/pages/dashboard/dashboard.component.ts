@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, effect } from '@angular/core';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import {
   ApexChart,
@@ -12,6 +12,7 @@ import {
   ApexXAxis,
   ApexYAxis,
 } from 'ng-apexcharts';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,6 +21,9 @@ import {
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
+  private theme = inject(ThemeService);
+  get isDark() { return this.theme.isDark(); }
+
   activeTab = 'geral';
   tabs = ['Geral', 'Atrair', 'Preparar para venda', 'Vender'];
 
@@ -42,9 +46,9 @@ export class DashboardComponent {
   funnelStroke: ApexStroke = { curve: 'smooth', width: 2 };
   funnelFill: ApexFill = { type: 'gradient', gradient: { shadeIntensity: 1, opacityFrom: 0.5, opacityTo: 0.1, stops: [0, 100] } };
   funnelColors = ['#C8FF00', '#3CB4A0', '#1A7A6A'];
-  funnelXaxis: ApexXAxis = { categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'], labels: { style: { colors: '#9CA3AF', fontSize: '11px' } }, axisBorder: { show: false }, axisTicks: { show: false } };
-  funnelYaxis: ApexYAxis = { labels: { style: { colors: '#9CA3AF', fontSize: '11px' }, formatter: (v: number) => (v / 1000).toFixed(1) + 'k' } };
-  funnelGrid: ApexGrid = { borderColor: '#F3F4F6', strokeDashArray: 4, xaxis: { lines: { show: false } } };
+  funnelXaxis!: ApexXAxis;
+  funnelYaxis!: ApexYAxis;
+  funnelGrid!: ApexGrid;
   funnelTooltip: ApexTooltip = { theme: 'dark', y: { formatter: (v: number) => v.toLocaleString('pt-BR') } };
   funnelLegend: ApexLegend = { show: false };
   funnelDataLabels: ApexDataLabels = { enabled: false };
@@ -68,11 +72,26 @@ export class DashboardComponent {
   productsSeries = [{ name: 'Vendidos', data: [620, 890, 750, 1100, 940, 1240, 800, 1050, 670, 920, 780, 1240] }];
   productsChart: ApexChart = { type: 'bar', height: 280, toolbar: { show: false } };
   productsPlotOptions: ApexPlotOptions = { bar: { borderRadius: 4, columnWidth: '55%' } };
-  productsXaxis: ApexXAxis = { categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], labels: { style: { colors: '#9CA3AF', fontSize: '10px' } }, axisBorder: { show: false }, axisTicks: { show: false } };
-  productsYaxis: ApexYAxis = { labels: { style: { colors: '#9CA3AF', fontSize: '10px' }, formatter: (v: number) => (v / 1000).toFixed(1) + 'k' } };
-  productsGrid: ApexGrid = { borderColor: '#F3F4F6', strokeDashArray: 4, xaxis: { lines: { show: false } } };
+  productsXaxis!: ApexXAxis;
+  productsYaxis!: ApexYAxis;
+  productsGrid!: ApexGrid;
   productsDataLabels: ApexDataLabels = { enabled: false };
   productsTooltip: ApexTooltip = { theme: 'dark', y: { formatter: (v: number) => v.toLocaleString('pt-BR') + ' vendas' } };
+
+  constructor() {
+    effect(() => {
+      const dark = this.theme.isDark();
+      const gridColor = dark ? '#2D2D2D' : '#F3F4F6';
+
+      this.funnelXaxis = { categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'], labels: { style: { colors: '#9CA3AF', fontSize: '11px' } }, axisBorder: { show: false }, axisTicks: { show: false } };
+      this.funnelYaxis = { labels: { style: { colors: '#9CA3AF', fontSize: '11px' }, formatter: (v: number) => (v / 1000).toFixed(1) + 'k' } };
+      this.funnelGrid = { borderColor: gridColor, strokeDashArray: 4, xaxis: { lines: { show: false } } };
+
+      this.productsXaxis = { categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], labels: { style: { colors: '#9CA3AF', fontSize: '10px' } }, axisBorder: { show: false }, axisTicks: { show: false } };
+      this.productsYaxis = { labels: { style: { colors: '#9CA3AF', fontSize: '10px' }, formatter: (v: number) => (v / 1000).toFixed(1) + 'k' } };
+      this.productsGrid = { borderColor: gridColor, strokeDashArray: 4, xaxis: { lines: { show: false } } };
+    });
+  }
 
   setTab(tab: string) {
     this.activeTab = tab.toLowerCase();

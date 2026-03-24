@@ -35,6 +35,13 @@ export class SidebarComponent {
     },
     { icon: 'products', label: 'Tabelas', route: '/tables' },
     { icon: 'settings', label: 'Cards', route: '/cards' },
+    {
+      icon: 'auth', label: 'Auth',
+      children: [
+        { label: 'Login', route: '/login' },
+        { label: 'Sign Up', route: '/signup' },
+      ]
+    },
   ];
 
   toggle() {

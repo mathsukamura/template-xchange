@@ -1,17 +1,24 @@
 <div
   class="rounded-xl p-5 transition-shadow hover:shadow-md"
-  [class.bg-dark-card]="dark()"
-  [class.text-white]="dark()"
-  [class.bg-white]="!dark()"
-  [class.border]="!dark()"
-  [class.border-gray-border]="!dark()"
+  [class.bg-dark-card]="dark() && !themeDark()"
+  [class.text-white]="dark() && !themeDark()"
+  [class.bg-white]="(!dark() && !themeDark()) || (dark() && themeDark())"
+  [class.border]="!dark() || themeDark()"
+  [class.border-gray-border]="!dark() || themeDark()"
+  [class.text-gray-900]="dark() && themeDark()"
 >
-  <p class="text-xs font-medium mb-1" [class.text-gray-400]="dark()" [class.text-gray-500]="!dark()">
+  <p class="text-xs font-medium mb-1"
+    [class.text-gray-400]="dark() && !themeDark()"
+    [class.text-gray-500]="!dark() || themeDark()"
+  >
     {{ label() }}
   </p>
   <p class="text-2xl font-bold tracking-tight">{{ value() }}</p>
   @if (subtitle()) {
-    <p class="text-xs mt-1" [class.text-gray-400]="dark()" [class.text-gray-500]="!dark()">
+    <p class="text-xs mt-1"
+      [class.text-gray-400]="dark() && !themeDark()"
+      [class.text-gray-500]="!dark() || themeDark()"
+    >
       {{ subtitle() }}
     </p>
   }

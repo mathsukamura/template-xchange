@@ -1,15 +1,15 @@
 <!-- Header -->
 <div class="mb-6">
-  <h1 class="text-2xl font-extrabold text-gray-900">Gráficos</h1>
-  <p class="text-xs text-gray-400 mt-1">Visualizações de dados do seu negócio</p>
+  <h1 class="text-2xl font-extrabold text-gray-900 dark:text-white">Graficos</h1>
+  <p class="text-xs text-gray-400 mt-1">Visualizacoes de dados do seu negocio</p>
 </div>
 
-<div class="grid grid-cols-2 gap-5">
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-5">
 
   <!-- Area Chart -->
-  <div class="bg-white rounded-2xl p-5">
-    <p class="text-sm font-semibold text-gray-900 mb-1">Receita vs Custos</p>
-    <p class="text-[10px] text-gray-400 mb-4">Evolução mensal</p>
+  <div class="bg-white dark:bg-dark-lighter rounded-2xl p-5">
+    <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Receita vs Custos</p>
+    <p class="text-[10px] text-gray-400 mb-4">Evolucao mensal</p>
     <apx-chart
       [series]="areaSeries"
       [chart]="areaChart"
@@ -26,9 +26,9 @@
   </div>
 
   <!-- Bar Chart -->
-  <div class="bg-white rounded-2xl p-5">
-    <p class="text-sm font-semibold text-gray-900 mb-1">Vendas vs Reembolsos</p>
-    <p class="text-[10px] text-gray-400 mb-4">Por mês</p>
+  <div class="bg-white dark:bg-dark-lighter rounded-2xl p-5">
+    <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Vendas vs Reembolsos</p>
+    <p class="text-[10px] text-gray-400 mb-4">Por mes</p>
     <apx-chart
       [series]="barSeries"
       [chart]="barChart"
@@ -44,8 +44,8 @@
   </div>
 
   <!-- Line Chart -->
-  <div class="bg-white rounded-2xl p-5">
-    <p class="text-sm font-semibold text-gray-900 mb-1">Funil de Conversão</p>
+  <div class="bg-white dark:bg-dark-lighter rounded-2xl p-5">
+    <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Funil de Conversao</p>
     <p class="text-[10px] text-gray-400 mb-4">Visitantes → Leads → Clientes</p>
     <apx-chart
       [series]="lineSeries"
@@ -62,9 +62,9 @@
   </div>
 
   <!-- Donut Chart -->
-  <div class="bg-white rounded-2xl p-5">
-    <p class="text-sm font-semibold text-gray-900 mb-1">Vendas por Categoria</p>
-    <p class="text-[10px] text-gray-400 mb-4">Distribuição percentual</p>
+  <div class="bg-white dark:bg-dark-lighter rounded-2xl p-5">
+    <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Vendas por Categoria</p>
+    <p class="text-[10px] text-gray-400 mb-4">Distribuicao percentual</p>
     <apx-chart
       [series]="donutSeries"
       [chart]="donutChart"

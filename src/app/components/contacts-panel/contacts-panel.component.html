@@ -1,4 +1,4 @@
-<div class="bg-dark-card rounded-xl p-5 text-white">
+<div class="bg-dark-card dark:bg-white rounded-xl p-5 text-white dark:text-gray-900">
   <div class="flex items-center justify-between mb-5">
     <h3 class="font-semibold text-sm">Contatos</h3>
     <button class="px-3 py-1.5 bg-lime-accent text-dark text-xs font-semibold rounded-lg hover:bg-lime-accent-hover transition-colors cursor-pointer">
@@ -8,13 +8,13 @@
 
   <!-- Top Stats -->
   <div class="grid grid-cols-2 gap-4 mb-5">
-    <div class="bg-dark-lighter rounded-lg p-3 text-center">
+    <div class="bg-dark-lighter dark:bg-gray-100 rounded-lg p-3 text-center">
       <p class="text-2xl font-bold">{{ stats.total }}</p>
-      <p class="text-[10px] text-gray-400 uppercase tracking-wider">Listas</p>
+      <p class="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-wider">Listas</p>
     </div>
-    <div class="bg-dark-lighter rounded-lg p-3 text-center">
+    <div class="bg-dark-lighter dark:bg-gray-100 rounded-lg p-3 text-center">
       <p class="text-2xl font-bold">{{ stats.messages }}</p>
-      <p class="text-[10px] text-gray-400 uppercase tracking-wider">Contatos</p>
+      <p class="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-wider">Contatos</p>
     </div>
   </div>
 
@@ -23,10 +23,10 @@
     @for (contact of contacts; track contact.label) {
       <div>
         <div class="flex items-center justify-between mb-1">
-          <p class="text-xs text-gray-300 truncate flex-1 mr-2">{{ contact.label }}</p>
-          <span class="text-xs font-semibold text-lime-accent">{{ contact.value }}</span>
+          <p class="text-xs text-gray-300 dark:text-gray-600 truncate flex-1 mr-2">{{ contact.label }}</p>
+          <span class="text-xs font-semibold text-lime-accent dark:text-gray-900">{{ contact.value }}</span>
         </div>
-        <div class="w-full bg-dark-lighter rounded-full h-1.5">
+        <div class="w-full bg-dark-lighter dark:bg-gray-200 rounded-full h-1.5">
           <div
             class="bg-lime-accent h-1.5 rounded-full transition-all duration-500"
             [style.width.%]="contact.percentage"

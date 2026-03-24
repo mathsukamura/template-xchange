@@ -2,8 +2,8 @@
   <!-- Page Header -->
   <div class="flex items-center justify-between">
     <div>
-      <h2 class="text-xl font-bold text-gray-900">Funis de vendas</h2>
-      <p class="text-sm text-gray-500 mt-1">Acompanhe a performance dos seus funis</p>
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white">Funis de vendas</h2>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Acompanhe a performance dos seus funis</p>
     </div>
     <div class="flex items-center gap-3">
       <button class="px-4 py-2 bg-lime-accent text-dark text-sm font-semibold rounded-lg hover:bg-lime-accent-hover transition-colors cursor-pointer">
@@ -15,14 +15,14 @@
   <!-- Top Stats (Dark) -->
   <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
     <app-stats-card label="Total funis" value="10" [dark]="true" />
-    <app-stats-card label="Taxa conversão" value="34%" [dark]="true" trendValue="+2,3%" trend="up" />
+    <app-stats-card label="Taxa conversao" value="34%" [dark]="true" trendValue="+2,3%" trend="up" />
     <app-stats-card label="Total leads" value="23.435" [dark]="true" trendValue="+15%" trend="up" />
     <app-stats-card label="Receita total" value="R$ 3k/k" [dark]="true" />
   </div>
 
   <!-- Funnel Conversion Map -->
-  <div class="bg-dark-card rounded-xl p-6">
-    <h3 class="text-white font-semibold text-sm mb-4">Funil com maps conversão no período</h3>
+  <div class="bg-dark-card dark:bg-white rounded-xl p-6">
+    <h3 class="text-white dark:text-gray-900 font-semibold text-sm mb-4">Funil com maps conversao no periodo</h3>
 
     <!-- Conversion Flow -->
     <div class="flex items-center justify-between gap-2 mb-6">
@@ -31,7 +31,7 @@
           <div class="relative">
             <div class="h-2 rounded-full" [class]="i === 0 ? 'bg-lime-accent' : i === 1 ? 'bg-lime-accent/60' : i === 2 ? 'bg-lime-accent/40' : 'bg-lime-accent/20'"></div>
           </div>
-          <p class="text-[10px] text-gray-400 mt-1.5 uppercase tracking-wider">{{ step }}</p>
+          <p class="text-[10px] text-gray-400 dark:text-gray-500 mt-1.5 uppercase tracking-wider">{{ step }}</p>
         </div>
         @if (i < 3) {
           <svg class="w-4 h-4 text-gray-500 flex-shrink-0 -mt-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">

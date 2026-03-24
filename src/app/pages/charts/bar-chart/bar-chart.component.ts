@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, effect } from '@angular/core';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ApexChart, ApexDataLabels, ApexGrid, ApexLegend, ApexPlotOptions, ApexTooltip, ApexXAxis, ApexYAxis } from 'ng-apexcharts';
+import { ThemeService } from '../../../services/theme.service';
 
 @Component({
   selector: 'app-bar-chart',
@@ -9,14 +10,26 @@ import { ApexChart, ApexDataLabels, ApexGrid, ApexLegend, ApexPlotOptions, ApexT
   styleUrl: './bar-chart.component.scss'
 })
 export class BarChartComponent {
+  private theme = inject(ThemeService);
+
   colors = ['#C8FF00', '#3CB4A0', '#1A7A6A'];
-  months: ApexXAxis = { categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], labels: { style: { colors: '#9CA3AF', fontSize: '11px' } }, axisBorder: { show: false }, axisTicks: { show: false } };
-  yaxis: ApexYAxis = { labels: { style: { colors: '#9CA3AF', fontSize: '11px' } } };
-  grid: ApexGrid = { borderColor: '#F3F4F6', strokeDashArray: 4, xaxis: { lines: { show: false } } };
+  months!: ApexXAxis;
+  yaxis!: ApexYAxis;
+  grid!: ApexGrid;
   tooltip: ApexTooltip = { theme: 'dark' };
   dataLabels: ApexDataLabels = { enabled: false };
-  legend: ApexLegend = { position: 'top', horizontalAlign: 'right', labels: { colors: '#6B7280' }, fontSize: '12px', markers: { width: 8, height: 8, radius: 4 } };
+  legend!: ApexLegend;
   plotOptions: ApexPlotOptions = { bar: { borderRadius: 4, columnWidth: '45%' } };
+
+  constructor() {
+    effect(() => {
+      const dark = this.theme.isDark();
+      this.months = { categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], labels: { style: { colors: '#9CA3AF', fontSize: '11px' } }, axisBorder: { show: false }, axisTicks: { show: false } };
+      this.yaxis = { labels: { style: { colors: '#9CA3AF', fontSize: '11px' } } };
+      this.grid = { borderColor: dark ? '#2D2D2D' : '#F3F4F6', strokeDashArray: 4, xaxis: { lines: { show: false } } };
+      this.legend = { position: 'top', horizontalAlign: 'right', labels: { colors: dark ? '#9CA3AF' : '#6B7280' }, fontSize: '12px', markers: { width: 8, height: 8, radius: 4 } };
+    });
+  }
 
   series1 = [
     { name: 'Vendas', data: [620, 890, 750, 1100, 940, 1240, 800, 1050, 670, 920, 780, 1240] },
