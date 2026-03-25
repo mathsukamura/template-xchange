@@ -28,12 +28,12 @@ export class DashboardComponent {
   tabs = ['Geral', 'Atrair', 'Preparar para venda', 'Vender'];
 
   products = [
-    { name: 'Método Expert Digital', category: 'Curso online', price: 'R$ 497', sales: 2340, initials: 'ME', color: '#1A1A1A' },
-    { name: 'Mentoria Premium', category: 'Mentoria', price: 'R$ 2.997', sales: 186, initials: 'MP', color: '#1A1A1A' },
-    { name: 'Pack Templates Pro', category: 'Template', price: 'R$ 97', sales: 4820, initials: 'PT', color: '#1A1A1A' },
-    { name: 'Comunidade VIP', category: 'Assinatura', price: 'R$ 49/mês', sales: 1540, initials: 'CV', color: '#1A1A1A' },
-    { name: 'E-book Funis de Venda', category: 'E-book', price: 'R$ 27', sales: 8200, initials: 'EF', color: '#1A1A1A' },
-    { name: 'Workshop Ao Vivo', category: 'Evento', price: 'R$ 197', sales: 620, initials: 'WA', color: '#1A1A1A' },
+    { name: 'Método Expert Digital', category: 'Curso online', price: 'R$ 497', sales: 2340, initials: 'ME', color: '#C8FF00' },
+    { name: 'Mentoria Premium', category: 'Mentoria', price: 'R$ 2.997', sales: 186, initials: 'MP', color: '#3CB4A0' },
+    { name: 'Pack Templates Pro', category: 'Template', price: 'R$ 97', sales: 4820, initials: 'PT', color: '#6366F1' },
+    { name: 'Comunidade VIP', category: 'Assinatura', price: 'R$ 49/mês', sales: 1540, initials: 'CV', color: '#F59E0B' },
+    { name: 'E-book Funis de Venda', category: 'E-book', price: 'R$ 27', sales: 8200, initials: 'EF', color: '#EC4899' },
+    { name: 'Workshop Ao Vivo', category: 'Evento', price: 'R$ 197', sales: 620, initials: 'WA', color: '#8B5CF6' },
   ];
 
   // ── Funnel Area Chart ──
@@ -65,8 +65,9 @@ export class DashboardComponent {
   revenueXaxis: ApexXAxis = { categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'], labels: { show: false }, axisBorder: { show: false }, axisTicks: { show: false } };
   revenueYaxis: ApexYAxis = { labels: { show: false } };
   revenueGrid: ApexGrid = { show: false };
-  revenueTooltip: ApexTooltip = { theme: 'dark', y: { formatter: (v: number) => 'R$ ' + v.toLocaleString('pt-BR') } };
+  revenueTooltip!: ApexTooltip;
   revenueDataLabels: ApexDataLabels = { enabled: false };
+  revenueLegend!: ApexLegend;
 
   // ── Products Monthly Bar Chart ──
   productsSeries = [{ name: 'Vendidos', data: [620, 890, 750, 1100, 940, 1240, 800, 1050, 670, 920, 780, 1240] }];
@@ -90,6 +91,11 @@ export class DashboardComponent {
       this.productsXaxis = { categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], labels: { style: { colors: '#9CA3AF', fontSize: '10px' } }, axisBorder: { show: false }, axisTicks: { show: false } };
       this.productsYaxis = { labels: { style: { colors: '#9CA3AF', fontSize: '10px' }, formatter: (v: number) => (v / 1000).toFixed(1) + 'k' } };
       this.productsGrid = { borderColor: gridColor, strokeDashArray: 4, xaxis: { lines: { show: false } } };
+
+      // Revenue: card invertido, então cores da legenda/tooltip também invertidas
+      const revenueLabelColor = dark ? '#1F2937' : '#E5E7EB';
+      this.revenueTooltip = { theme: dark ? 'dark' : 'light', y: { formatter: (v: number) => 'R$ ' + v.toLocaleString('pt-BR') } };
+      this.revenueLegend = { labels: { colors: revenueLabelColor } };
     });
   }
 

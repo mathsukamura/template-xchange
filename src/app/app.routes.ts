@@ -20,6 +20,7 @@ export const routes: Routes = [
       { path: 'tables', loadComponent: () => import('./pages/tables/tables.component').then(m => m.TablesComponent) },
       { path: 'cards', loadComponent: () => import('./pages/cards/cards.component').then(m => m.CardsComponent) },
       { path: 'forms', loadComponent: () => import('./pages/forms/forms.component').then(m => m.FormsComponent) },
+      { path: 'modais', loadComponent: () => import('./pages/modais/modais').then(m => m.Modais) },
     ]
   }
 ];

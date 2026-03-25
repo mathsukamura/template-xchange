@@ -50,6 +50,7 @@ export class SidebarComponent {
         { icon: 'products', label: 'Tabelas', route: '/tables' },
         { icon: 'settings', label: 'Cards', route: '/cards' },
         { icon: 'contacts', label: 'Formularios', route: '/forms' },
+        { icon: 'modals', label: 'Modais', route: '/modais' },
       ]
     },
     {

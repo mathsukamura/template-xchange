@@ -1,28 +1,30 @@
-// Desktop sidebar - hidden on mobile
+// Desktop sidebar
 .sidebar-desktop {
   display: none !important;
   width: 72px;
-  align-items: center;
-  flex-direction: column;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
 
   @media (min-width: 1024px) {
-    display: flex !important;
+    display: block !important;
   }
 
   &.expanded {
     width: 208px;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
-    align-items: flex-start;
-    overflow: hidden;
   }
 
-  * {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    &::-webkit-scrollbar {
-      display: none;
+  // Collapsed: center everything
+  &:not(.expanded) {
+    display: none !important;
+    @media (min-width: 1024px) {
+      display: flex !important;
+      flex-direction: column;
+      align-items: center;
     }
   }
 }
@@ -39,7 +41,11 @@
 // Mobile drawer slide
 .sidebar-mobile {
   transform: translateX(-100%);
-
+  overflow-x: hidden;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
   &.open {
     transform: translateX(0);
   }

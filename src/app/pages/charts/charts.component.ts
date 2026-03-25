@@ -44,7 +44,7 @@ export class ChartsComponent {
       this.months = { categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], labels: { style: { colors: '#9CA3AF', fontSize: '11px' } }, axisBorder: { show: false }, axisTicks: { show: false } };
       this.yaxis = { labels: { style: { colors: '#9CA3AF', fontSize: '11px' } } };
       this.grid = { borderColor: gridColor, strokeDashArray: 4, xaxis: { lines: { show: false } } };
-      this.legend = { position: 'top', horizontalAlign: 'right', labels: { colors: legendColor }, fontSize: '12px', markers: { width: 8, height: 8, radius: 4 } };
+      this.legend = { position: 'top', horizontalAlign: 'right', labels: { colors: legendColor }, fontSize: '12px', markers: { offsetX: 0, offsetY: 0 } };
       this.donutColors = ['#C8FF00', '#3CB4A0', '#1A7A6A', dark ? '#6B7280' : '#1A1A1A'];
       this.donutLegend = { position: 'bottom', labels: { colors: legendColor }, fontSize: '12px' };
       this.donutPlotOptions = { pie: { donut: { size: '70%', labels: { show: true, total: { show: true, label: 'Total', fontSize: '14px', fontWeight: '700', color: textColor } } } } };

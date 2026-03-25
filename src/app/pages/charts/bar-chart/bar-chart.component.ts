@@ -27,7 +27,7 @@ export class BarChartComponent {
       this.months = { categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], labels: { style: { colors: '#9CA3AF', fontSize: '11px' } }, axisBorder: { show: false }, axisTicks: { show: false } };
       this.yaxis = { labels: { style: { colors: '#9CA3AF', fontSize: '11px' } } };
       this.grid = { borderColor: dark ? '#2D2D2D' : '#F3F4F6', strokeDashArray: 4, xaxis: { lines: { show: false } } };
-      this.legend = { position: 'top', horizontalAlign: 'right', labels: { colors: dark ? '#9CA3AF' : '#6B7280' }, fontSize: '12px', markers: { width: 8, height: 8, radius: 4 } };
+      this.legend = { position: 'top', horizontalAlign: 'right', labels: { colors: dark ? '#9CA3AF' : '#6B7280' }, fontSize: '12px', markers: { offsetX: 0, offsetY: 0 } };
     });
   }
 

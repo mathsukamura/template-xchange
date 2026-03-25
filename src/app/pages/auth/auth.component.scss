@@ -18,13 +18,16 @@
 }
 
 .form-panel {
-  width: 100%;
-  flex-shrink: 0;
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: safe center;
   justify-content: center;
   padding: 3rem 1.5rem;
   overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -36,7 +39,10 @@
   }
 
   @media (min-width: 1024px) {
+    position: relative;
+    inset: auto;
     width: 50%;
+    flex-shrink: 0;
     padding: 3rem 2rem;
   }
 }
@@ -91,12 +97,12 @@ $size: 90px;
   backface-visibility: hidden;
 }
 
-.cube-front  { transform: translateZ($size / 2); }
-.cube-back   { transform: rotateY(180deg) translateZ($size / 2); }
-.cube-right  { transform: rotateY(90deg) translateZ($size / 2); }
-.cube-left   { transform: rotateY(-90deg) translateZ($size / 2); }
-.cube-top    { transform: rotateX(90deg) translateZ($size / 2); }
-.cube-bottom { transform: rotateX(-90deg) translateZ($size / 2); }
+.cube-front  { transform: translateZ(calc($size / 2)); }
+.cube-back   { transform: rotateY(180deg) translateZ(calc($size / 2)); }
+.cube-right  { transform: rotateY(90deg) translateZ(calc($size / 2)); }
+.cube-left   { transform: rotateY(-90deg) translateZ(calc($size / 2)); }
+.cube-top    { transform: rotateX(90deg) translateZ(calc($size / 2)); }
+.cube-bottom { transform: rotateX(-90deg) translateZ(calc($size / 2)); }
 
 @keyframes rotate-cube {
   0%    { transform: rotateX(-15deg) rotateY(0deg); }

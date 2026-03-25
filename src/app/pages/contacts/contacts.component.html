@@ -27,7 +27,7 @@
         <!-- Contact Rows -->
         @for (contact of recentContacts; track contact.email) {
           <div class="flex items-center gap-3 lg:gap-4 p-3 lg:p-4 hover:bg-gray-50 dark:hover:bg-dark-card transition-colors border-b border-gray-border dark:border-dark-card last:border-b-0">
-            <div class="w-8 h-8 lg:w-10 lg:h-10 bg-dark dark:bg-dark-card rounded-full flex items-center justify-center text-white text-[10px] lg:text-xs font-semibold flex-shrink-0">
+            <div class="w-8 h-8 lg:w-10 lg:h-10 bg-dark dark:bg-white rounded-full flex items-center justify-center text-white dark:text-gray-900 text-[10px] lg:text-xs font-semibold flex-shrink-0">
               {{ contact.avatar }}
             </div>
             <div class="flex-1 min-w-0">
