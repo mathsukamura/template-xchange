@@ -1,0 +1,156 @@
+:host {
+  display: block;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.auth-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.forms-wrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+}
+
+.form-panel {
+  width: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: safe center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+    transition-delay: 0.3s;
+  }
+}
+
+.overlay-panel {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 10;
+  right: 0;
+  transform: translateX(0);
+
+  &.slide-left {
+    transform: translateX(-100%);
+  }
+}
+
+// ── 3D Cube ──
+
+.scene {
+  perspective: 600px;
+}
+
+$size: 90px;
+
+.cube {
+  width: $size;
+  height: $size;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotate-cube 12s ease-in-out infinite;
+}
+
+.cube-face {
+  position: absolute;
+  width: $size;
+  height: $size;
+  background: #C8FF00;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 0 40px rgba(200, 255, 0, 0.15);
+  backface-visibility: hidden;
+}
+
+.cube-front  { transform: translateZ($size / 2); }
+.cube-back   { transform: rotateY(180deg) translateZ($size / 2); }
+.cube-right  { transform: rotateY(90deg) translateZ($size / 2); }
+.cube-left   { transform: rotateY(-90deg) translateZ($size / 2); }
+.cube-top    { transform: rotateX(90deg) translateZ($size / 2); }
+.cube-bottom { transform: rotateX(-90deg) translateZ($size / 2); }
+
+@keyframes rotate-cube {
+  0%    { transform: rotateX(-15deg) rotateY(0deg); }
+  25%   { transform: rotateX(15deg) rotateY(90deg); }
+  50%   { transform: rotateX(-10deg) rotateY(180deg); }
+  75%   { transform: rotateX(10deg) rotateY(270deg); }
+  100%  { transform: rotateX(-15deg) rotateY(360deg); }
+}
+
+// ── 3D Rings ──
+
+.rings-scene {
+  perspective: 800px;
+}
+
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid rgba(200, 255, 0, 0.15);
+  transform-style: preserve-3d;
+}
+
+.ring-1 {
+  width: 220px;
+  height: 220px;
+  animation: orbit-1 8s linear infinite;
+}
+
+.ring-2 {
+  width: 300px;
+  height: 300px;
+  border-style: dashed;
+  border-color: rgba(200, 255, 0, 0.1);
+  animation: orbit-2 12s linear infinite;
+}
+
+.ring-3 {
+  width: 380px;
+  height: 380px;
+  border-color: rgba(200, 255, 0, 0.06);
+  animation: orbit-3 16s linear infinite;
+}
+
+@keyframes orbit-1 {
+  0%   { transform: rotateX(70deg) rotateZ(0deg); }
+  100% { transform: rotateX(70deg) rotateZ(360deg); }
+}
+
+@keyframes orbit-2 {
+  0%   { transform: rotateX(55deg) rotateY(30deg) rotateZ(0deg); }
+  100% { transform: rotateX(55deg) rotateY(30deg) rotateZ(-360deg); }
+}
+
+@keyframes orbit-3 {
+  0%   { transform: rotateX(65deg) rotateY(-20deg) rotateZ(0deg); }
+  100% { transform: rotateX(65deg) rotateY(-20deg) rotateZ(360deg); }
+}
+
+// Glow pulse
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.15); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
