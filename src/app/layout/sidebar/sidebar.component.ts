@@ -8,6 +8,11 @@ interface MenuItem {
   children?: { label: string; route: string }[];
 }
 
+interface MenuSection {
+  title: string;
+  items: MenuItem[];
+}
+
 @Component({
   selector: 'app-sidebar',
   imports: [RouterLink, RouterLinkActive],
@@ -16,30 +21,47 @@ interface MenuItem {
 })
 export class SidebarComponent {
   expanded = false;
+  mobileOpen = false;
   expandedChange = output<boolean>();
   openDropdown: string | null = null;
 
-  menuItems: MenuItem[] = [
-    { icon: 'dashboard', label: 'Dashboard', route: '/dashboard' },
-    { icon: 'funnel', label: 'Funis', route: '/funnels' },
-    { icon: 'contacts', label: 'Contatos', route: '/contacts' },
-    { icon: 'messages', label: 'Chat', route: '/chat' },
+  sections: MenuSection[] = [
     {
-      icon: 'charts', label: 'Gráficos',
-      children: [
-        { label: 'Área', route: '/charts/area' },
-        { label: 'Barras', route: '/charts/bar' },
-        { label: 'Linha', route: '/charts/line' },
-        { label: 'Pizza', route: '/charts/pie' },
+      title: 'Principal',
+      items: [
+        { icon: 'dashboard', label: 'Dashboard', route: '/dashboard' },
+        { icon: 'funnel', label: 'Funis', route: '/funnels' },
+        { icon: 'contacts', label: 'Contatos', route: '/contacts' },
+        { icon: 'messages', label: 'Chat', route: '/chat' },
       ]
     },
-    { icon: 'products', label: 'Tabelas', route: '/tables' },
-    { icon: 'settings', label: 'Cards', route: '/cards' },
     {
-      icon: 'auth', label: 'Auth',
-      children: [
-        { label: 'Login', route: '/login' },
-        { label: 'Sign Up', route: '/signup' },
+      title: 'Dados',
+      items: [
+        {
+          icon: 'charts', label: 'Graficos',
+          children: [
+            { label: 'Area', route: '/charts/area' },
+            { label: 'Barras', route: '/charts/bar' },
+            { label: 'Linha', route: '/charts/line' },
+            { label: 'Pizza', route: '/charts/pie' },
+          ]
+        },
+        { icon: 'products', label: 'Tabelas', route: '/tables' },
+        { icon: 'settings', label: 'Cards', route: '/cards' },
+        { icon: 'contacts', label: 'Formularios', route: '/forms' },
+      ]
+    },
+    {
+      title: 'Conta',
+      items: [
+        {
+          icon: 'auth', label: 'Auth',
+          children: [
+            { label: 'Login', route: '/login' },
+            { label: 'Sign Up', route: '/signup' },
+          ]
+        },
       ]
     },
   ];
@@ -48,6 +70,22 @@ export class SidebarComponent {
     this.expanded = !this.expanded;
     if (!this.expanded) this.openDropdown = null;
     this.expandedChange.emit(this.expanded);
+  }
+
+  toggleMobile() {
+    this.mobileOpen = !this.mobileOpen;
+    if (this.mobileOpen) {
+      this.expanded = true;
+      this.expandedChange.emit(true);
+    }
+  }
+
+  closeMobile() {
+    this.mobileOpen = false;
+  }
+
+  onNavClick() {
+    this.mobileOpen = false;
   }
 
   toggleDropdown(label: string) {

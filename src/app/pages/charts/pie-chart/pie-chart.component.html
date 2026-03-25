@@ -1,18 +1,20 @@
-<div class="mb-6">
-  <h1 class="text-2xl font-extrabold text-gray-900 dark:text-white">Grafico Pizza / Donut</h1>
+<div class="mb-4 lg:mb-6">
+  <h1 class="text-xl lg:text-2xl font-extrabold text-gray-900 dark:text-white">Grafico Pizza / Donut</h1>
   <p class="text-xs text-gray-400 mt-1">Distribuicao proporcional de dados</p>
 </div>
 
-<div class="grid grid-cols-2 gap-5">
-  <div class="bg-white dark:bg-dark-lighter rounded-2xl p-5">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5">
+  <div class="bg-white dark:bg-dark-lighter rounded-2xl p-4 lg:p-5">
     <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Vendas por Categoria</p>
     <p class="text-[10px] text-gray-400 mb-4">Distribuicao em donut</p>
     <apx-chart [series]="donutSeries" [chart]="donutChart" [labels]="donutLabels" [colors]="donutColors" [legend]="legend" [plotOptions]="donutPlotOptions" [dataLabels]="dataLabels" [tooltip]="tooltip" />
   </div>
 
-  <div class="bg-white dark:bg-dark-lighter rounded-2xl p-5">
+  <div class="bg-white dark:bg-dark-lighter rounded-2xl p-4 lg:p-5">
     <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Origem do Trafego</p>
     <p class="text-[10px] text-gray-400 mb-4">De onde vem seus visitantes</p>
     <apx-chart [series]="pieSeries" [chart]="pieChart" [labels]="pieLabels" [colors]="pieColors" [legend]="legend" [dataLabels]="dataLabels" [tooltip]="tooltip" />
   </div>
 </div>
+
+<div class="h-20 lg:hidden"></div>

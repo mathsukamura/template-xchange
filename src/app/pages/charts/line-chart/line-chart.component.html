@@ -1,18 +1,24 @@
-<div class="mb-6">
-  <h1 class="text-2xl font-extrabold text-gray-900 dark:text-white">Grafico de Linha</h1>
+<div class="mb-4 lg:mb-6">
+  <h1 class="text-xl lg:text-2xl font-extrabold text-gray-900 dark:text-white">Grafico de Linha</h1>
   <p class="text-xs text-gray-400 mt-1">Tendencias e evolucao ao longo do tempo</p>
 </div>
 
-<div class="grid grid-cols-1 gap-5">
-  <div class="bg-white dark:bg-dark-lighter rounded-2xl p-5">
+<div class="grid grid-cols-1 gap-4 lg:gap-5">
+  <div class="bg-white dark:bg-dark-lighter rounded-2xl p-4 lg:p-5 overflow-x-auto">
     <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Funil de Conversao</p>
     <p class="text-[10px] text-gray-400 mb-4">Visitantes → Leads → Clientes</p>
-    <apx-chart [series]="series1" [chart]="chart1" [stroke]="stroke1" [colors]="colors" [xaxis]="months" [yaxis]="yaxis" [grid]="grid" [tooltip]="tooltip" [dataLabels]="dataLabels" [legend]="legend" />
+    <div class="min-w-[600px]">
+      <apx-chart [series]="series1" [chart]="chart1" [stroke]="stroke1" [colors]="colors" [xaxis]="months" [yaxis]="yaxis" [grid]="grid" [tooltip]="tooltip" [dataLabels]="dataLabels" [legend]="legend" />
+    </div>
   </div>
 
-  <div class="bg-white dark:bg-dark-lighter rounded-2xl p-5">
+  <div class="bg-white dark:bg-dark-lighter rounded-2xl p-4 lg:p-5 overflow-x-auto">
     <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Ticket Medio</p>
     <p class="text-[10px] text-gray-400 mb-4">Evolucao do valor medio por venda</p>
-    <apx-chart [series]="series2" [chart]="chart2" [stroke]="stroke2" [colors]="['#C8FF00']" [xaxis]="months" [yaxis]="yaxis" [grid]="grid" [tooltip]="tooltip" [dataLabels]="dataLabels" [legend]="legend" />
+    <div class="min-w-[600px]">
+      <apx-chart [series]="series2" [chart]="chart2" [stroke]="stroke2" [colors]="['#C8FF00']" [xaxis]="months" [yaxis]="yaxis" [grid]="grid" [tooltip]="tooltip" [dataLabels]="dataLabels" [legend]="legend" />
+    </div>
   </div>
 </div>
+
+<div class="h-20 lg:hidden"></div>

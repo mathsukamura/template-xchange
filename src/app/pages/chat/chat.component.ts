@@ -26,6 +26,7 @@ export class ChatComponent {
   search = '';
   newMessage = '';
   selectedUser: ChatUser | null = null;
+  mobileShowChat = false;
 
   users: ChatUser[] = [
     {
@@ -87,6 +88,11 @@ export class ChatComponent {
 
   selectUser(user: ChatUser) {
     this.selectedUser = user;
+    this.mobileShowChat = true;
+  }
+
+  goBack() {
+    this.mobileShowChat = false;
   }
 
   sendMessage() {

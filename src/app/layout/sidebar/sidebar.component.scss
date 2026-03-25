@@ -1,0 +1,65 @@
+// Desktop sidebar - hidden on mobile
+.sidebar-desktop {
+  display: none !important;
+  width: 72px;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+
+  @media (min-width: 1024px) {
+    display: flex !important;
+  }
+
+  &.expanded {
+    width: 208px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    align-items: flex-start;
+    overflow: hidden;
+  }
+
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+// Mobile elements - hidden on desktop
+.sidebar-backdrop,
+.sidebar-mobile,
+.mobile-dock {
+  @media (min-width: 1024px) {
+    display: none !important;
+  }
+}
+
+// Mobile drawer slide
+.sidebar-mobile {
+  transform: translateX(-100%);
+
+  &.open {
+    transform: translateX(0);
+  }
+}
+
+// Mobile bottom dock
+.dock-item {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9CA3AF;
+  transition: all 0.2s;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  &:hover, &:active {
+    background: rgba(200, 255, 0, 0.1);
+    color: #B8E600;
+  }
+}

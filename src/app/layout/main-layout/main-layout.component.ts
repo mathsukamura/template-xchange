@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { HeaderComponent } from '../header/header.component';
@@ -11,6 +11,20 @@ import { HeaderComponent } from '../header/header.component';
 })
 export class MainLayoutComponent {
   sidebarExpanded = false;
+  isMobile = false;
+
+  constructor() {
+    this.checkMobile();
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.checkMobile();
+  }
+
+  private checkMobile() {
+    this.isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
+  }
 
   onSidebarExpand(expanded: boolean) {
     this.sidebarExpanded = expanded;

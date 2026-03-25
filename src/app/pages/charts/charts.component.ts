@@ -56,7 +56,7 @@ export class ChartsComponent {
     { name: 'Receita', data: [18200, 21500, 19800, 24300, 22100, 27900, 25000, 29800, 31200, 28500, 33000, 35400] },
     { name: 'Custos', data: [8200, 9500, 8800, 10300, 9100, 11900, 10500, 12200, 13100, 11800, 14200, 15000] },
   ];
-  areaChart: ApexChart = { type: 'area', height: 320, toolbar: { show: false } };
+  areaChart: ApexChart = { type: 'area', height: 300, toolbar: { show: false } };
   areaStroke: ApexStroke = { curve: 'smooth', width: 2 };
   areaFill: ApexFill = { type: 'gradient', gradient: { shadeIntensity: 1, opacityFrom: 0.4, opacityTo: 0.05, stops: [0, 100] } };
 
@@ -65,7 +65,7 @@ export class ChartsComponent {
     { name: 'Vendas', data: [620, 890, 750, 1100, 940, 1240, 800, 1050, 670, 920, 780, 1240] },
     { name: 'Reembolsos', data: [42, 55, 38, 72, 61, 85, 50, 68, 45, 58, 52, 78] },
   ];
-  barChart: ApexChart = { type: 'bar', height: 320, toolbar: { show: false } };
+  barChart: ApexChart = { type: 'bar', height: 300, toolbar: { show: false } };
   barPlotOptions: ApexPlotOptions = { bar: { borderRadius: 4, columnWidth: '45%' } };
 
   // Line
@@ -74,11 +74,11 @@ export class ChartsComponent {
     { name: 'Leads', data: [1200, 1500, 1400, 1800, 1700, 2100, 1900, 2400, 2200, 2800, 2400, 3200] },
     { name: 'Clientes', data: [320, 410, 380, 520, 490, 610, 550, 720, 680, 840, 720, 960] },
   ];
-  lineChart: ApexChart = { type: 'line', height: 320, toolbar: { show: false } };
+  lineChart: ApexChart = { type: 'line', height: 300, toolbar: { show: false } };
   lineStroke: ApexStroke = { curve: 'smooth', width: [3, 2, 2] };
 
   // Donut
   donutSeries = [42, 28, 18, 12];
-  donutChart: ApexChart = { type: 'donut', height: 320 };
+  donutChart: ApexChart = { type: 'donut', height: 300 };
   donutLabels = ['Curso online', 'Mentoria', 'Template', 'E-book'];
 }

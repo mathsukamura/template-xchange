@@ -1,0 +1,19 @@
+.chart-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.chart-inner {
+  width: 600px;
+}
+
+@media (min-width: 1024px) {
+  .chart-scroll {
+    overflow-x: visible;
+  }
+
+  .chart-inner {
+    width: 100%;
+  }
+}

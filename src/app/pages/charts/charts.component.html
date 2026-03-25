@@ -1,80 +1,42 @@
 <!-- Header -->
-<div class="mb-6">
-  <h1 class="text-2xl font-extrabold text-gray-900 dark:text-white">Graficos</h1>
+<div class="mb-4 lg:mb-6">
+  <h1 class="text-xl lg:text-2xl font-extrabold text-gray-900 dark:text-white">Graficos</h1>
   <p class="text-xs text-gray-400 mt-1">Visualizacoes de dados do seu negocio</p>
 </div>
 
-<div class="grid grid-cols-1 xl:grid-cols-2 gap-5">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-5">
 
-  <!-- Area Chart -->
-  <div class="bg-white dark:bg-dark-lighter rounded-2xl p-5">
-    <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Receita vs Custos</p>
-    <p class="text-[10px] text-gray-400 mb-4">Evolucao mensal</p>
-    <apx-chart
-      [series]="areaSeries"
-      [chart]="areaChart"
-      [stroke]="areaStroke"
-      [fill]="areaFill"
-      [colors]="colors"
-      [xaxis]="months"
-      [yaxis]="yaxis"
-      [grid]="grid"
-      [tooltip]="tooltip"
-      [dataLabels]="dataLabels"
-      [legend]="legend"
-    />
+  <div class="bg-white dark:bg-dark-lighter rounded-2xl p-3 lg:p-5 overflow-x-auto">
+    <p class="text-sm font-semibold text-gray-900 dark:text-white mb-0.5">Receita vs Custos</p>
+    <p class="text-[10px] text-gray-400 mb-2 lg:mb-4">Evolucao mensal</p>
+    <div class="min-w-[600px]">
+      <apx-chart [series]="areaSeries" [chart]="areaChart" [stroke]="areaStroke" [fill]="areaFill" [colors]="colors" [xaxis]="months" [yaxis]="yaxis" [grid]="grid" [tooltip]="tooltip" [dataLabels]="dataLabels" [legend]="legend" />
+    </div>
   </div>
 
-  <!-- Bar Chart -->
-  <div class="bg-white dark:bg-dark-lighter rounded-2xl p-5">
-    <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Vendas vs Reembolsos</p>
-    <p class="text-[10px] text-gray-400 mb-4">Por mes</p>
-    <apx-chart
-      [series]="barSeries"
-      [chart]="barChart"
-      [plotOptions]="barPlotOptions"
-      [colors]="colors"
-      [xaxis]="months"
-      [yaxis]="yaxis"
-      [grid]="grid"
-      [tooltip]="tooltip"
-      [dataLabels]="dataLabels"
-      [legend]="legend"
-    />
+  <div class="bg-white dark:bg-dark-lighter rounded-2xl p-3 lg:p-5 overflow-x-auto">
+    <p class="text-sm font-semibold text-gray-900 dark:text-white mb-0.5">Vendas vs Reembolsos</p>
+    <p class="text-[10px] text-gray-400 mb-2 lg:mb-4">Por mes</p>
+    <div class="min-w-[600px]">
+      <apx-chart [series]="barSeries" [chart]="barChart" [plotOptions]="barPlotOptions" [colors]="colors" [xaxis]="months" [yaxis]="yaxis" [grid]="grid" [tooltip]="tooltip" [dataLabels]="dataLabels" [legend]="legend" />
+    </div>
   </div>
 
-  <!-- Line Chart -->
-  <div class="bg-white dark:bg-dark-lighter rounded-2xl p-5">
-    <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Funil de Conversao</p>
-    <p class="text-[10px] text-gray-400 mb-4">Visitantes → Leads → Clientes</p>
-    <apx-chart
-      [series]="lineSeries"
-      [chart]="lineChart"
-      [stroke]="lineStroke"
-      [colors]="colors"
-      [xaxis]="months"
-      [yaxis]="yaxis"
-      [grid]="grid"
-      [tooltip]="tooltip"
-      [dataLabels]="dataLabels"
-      [legend]="legend"
-    />
+  <div class="bg-white dark:bg-dark-lighter rounded-2xl p-3 lg:p-5 overflow-x-auto">
+    <p class="text-sm font-semibold text-gray-900 dark:text-white mb-0.5">Funil de Conversao</p>
+    <p class="text-[10px] text-gray-400 mb-2 lg:mb-4">Visitantes → Leads → Clientes</p>
+    <div class="min-w-[600px]">
+      <apx-chart [series]="lineSeries" [chart]="lineChart" [stroke]="lineStroke" [colors]="colors" [xaxis]="months" [yaxis]="yaxis" [grid]="grid" [tooltip]="tooltip" [dataLabels]="dataLabels" [legend]="legend" />
+    </div>
   </div>
 
-  <!-- Donut Chart -->
-  <div class="bg-white dark:bg-dark-lighter rounded-2xl p-5">
-    <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Vendas por Categoria</p>
-    <p class="text-[10px] text-gray-400 mb-4">Distribuicao percentual</p>
-    <apx-chart
-      [series]="donutSeries"
-      [chart]="donutChart"
-      [labels]="donutLabels"
-      [colors]="donutColors"
-      [legend]="donutLegend"
-      [plotOptions]="donutPlotOptions"
-      [dataLabels]="dataLabels"
-      [tooltip]="tooltip"
-    />
+  <div class="bg-white dark:bg-dark-lighter rounded-2xl p-3 lg:p-5">
+    <p class="text-sm font-semibold text-gray-900 dark:text-white mb-0.5">Vendas por Categoria</p>
+    <p class="text-[10px] text-gray-400 mb-2 lg:mb-4">Distribuicao percentual</p>
+    <apx-chart [series]="donutSeries" [chart]="donutChart" [labels]="donutLabels" [colors]="donutColors" [legend]="donutLegend" [plotOptions]="donutPlotOptions" [dataLabels]="dataLabels" [tooltip]="tooltip" />
   </div>
 
 </div>
+
+<!-- Mobile dock spacer -->
+<div class="h-20 lg:hidden"></div>
