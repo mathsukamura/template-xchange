@@ -1,7 +1,9 @@
 import { Component, input, output } from '@angular/core';
+import { Icon } from '../icon/icon';
 
 @Component({
   selector: 'app-modal-wrapper',
+  imports: [Icon],
   templateUrl: './modal-wrapper.html',
   styles: `:host { display: contents; }`
 })

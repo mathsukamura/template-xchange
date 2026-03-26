@@ -1,5 +1,6 @@
 import { Component, input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Icon } from '../icon/icon';
 
 export interface TabItem {
   label: string;
@@ -8,7 +9,7 @@ export interface TabItem {
 
 @Component({
   selector: 'app-tab-menu',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, Icon],
   templateUrl: './tab-menu.html',
   styleUrl: './tab-menu.scss'
 })

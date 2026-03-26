@@ -1,9 +1,10 @@
 import { Component, input } from '@angular/core';
 import { CardContainer } from '../card-container/card-container';
+import { Icon } from '../icon/icon';
 
 @Component({
   selector: 'app-product-card',
-  imports: [CardContainer],
+  imports: [CardContainer, Icon],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss'
 })

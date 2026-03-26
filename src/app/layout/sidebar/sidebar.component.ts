@@ -1,8 +1,9 @@
 import { Component, output } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Icon, IconName } from '../../components/icon/icon';
 
 interface MenuItem {
-  icon: string;
+  icon: IconName;
   label: string;
   route?: string;
   children?: { label: string; route: string }[];
@@ -15,7 +16,7 @@ interface MenuSection {
 
 @Component({
   selector: 'app-sidebar',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, Icon],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })

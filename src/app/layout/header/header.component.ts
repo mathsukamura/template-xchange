@@ -1,11 +1,11 @@
 import { Component, inject, output } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
 import { TabMenu } from '../../components/tab-menu/tab-menu';
+import { Icon } from '../../components/icon/icon';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, RouterLinkActive, TabMenu],
+  imports: [TabMenu, Icon],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

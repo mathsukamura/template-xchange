@@ -1,10 +1,11 @@
 import { Component, inject, input, computed } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { ThemeService } from '../../services/theme.service';
+import { Icon } from '../icon/icon';
 
 @Component({
   selector: 'app-stats-card',
-  imports: [NgClass],
+  imports: [NgClass, Icon],
   templateUrl: './stats-card.component.html',
   styleUrl: './stats-card.component.scss'
 })
