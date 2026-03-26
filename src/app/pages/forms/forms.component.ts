@@ -15,6 +15,7 @@ import { HlmSeparatorImports } from '@spartan-ng/helm/separator';
 import { HlmFormFieldImports } from '@spartan-ng/helm/form-field';
 import { HlmTextareaImports } from '@spartan-ng/helm/textarea';
 import { ThemeService } from '../../services/theme.service';
+import { PageHeader } from '../../components/page-header/page-header';
 
 @Component({
   selector: 'app-forms',
@@ -31,6 +32,7 @@ import { ThemeService } from '../../services/theme.service';
     ...HlmSeparatorImports,
     ...HlmFormFieldImports,
     ...HlmTextareaImports,
+    PageHeader,
   ],
   templateUrl: './forms.component.html',
   styleUrl: './forms.component.scss'

@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { Avatar } from '../../components/avatar/avatar';
+import { PageHeader } from '../../components/page-header/page-header';
+import { CardContainer } from '../../components/card-container/card-container';
 
 @Component({
   selector: 'app-cards',
-  imports: [],
+  imports: [Avatar, PageHeader, CardContainer],
   templateUrl: './cards.component.html',
   styleUrl: './cards.component.scss'
 })

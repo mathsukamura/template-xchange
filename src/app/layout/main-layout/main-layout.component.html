@@ -1,6 +1,6 @@
 <div class="min-h-screen bg-gray-bg dark:bg-dark flex flex-col lg:flex-row">
   <!-- Sidebar -->
-  <app-sidebar (expandedChange)="onSidebarExpand($event)" />
+  <app-sidebar #sidebar (expandedChange)="onSidebarExpand($event)" />
 
   <!-- Main Content Area -->
   <div
@@ -8,7 +8,7 @@
     [style.margin-left.px]="isMobile ? 0 : (sidebarExpanded ? 208 : 72)"
   >
     <!-- Header -->
-    <app-header />
+    <app-header (menuToggle)="sidebar.toggleMobile()" />
 
     <!-- Page Card Container -->
     <div class="bg-gray-card dark:bg-dark-card rounded-2xl lg:rounded-3xl shadow-sm flex-1 p-4 lg:p-8 overflow-auto">

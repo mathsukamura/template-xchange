@@ -6,6 +6,7 @@
 @theme {
   --color-lime-accent: #C8FF00;
   --color-lime-accent-hover: #B8EE00;
+  --color-lime-accent-text: #65a30d;
   --color-dark: #1A1A1A;
   --color-dark-card: #232323;
   --color-dark-lighter: #2D2D2D;
@@ -55,6 +56,11 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
     &::-webkit-scrollbar { display: none; }
+  }
+
+  /* Dark mode theme overrides */
+  .dark {
+    --color-lime-accent-text: #C8FF00;
   }
 
   /* Dark mode spartan tokens */

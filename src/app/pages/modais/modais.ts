@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PageHeader } from '../../components/page-header/page-header';
+import { ModalWrapper } from '../../components/modal-wrapper/modal-wrapper';
 
 @Component({
   selector: 'app-modais',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, PageHeader, ModalWrapper],
   templateUrl: './modais.html',
   styleUrl: './modais.scss'
 })

@@ -1,3 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 :host-context(.dark) {
   .selected-user {
     background-color: rgba(200, 255, 0, 0.1);

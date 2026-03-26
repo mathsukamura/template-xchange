@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Avatar } from '../../components/avatar/avatar';
+import { PageHeader } from '../../components/page-header/page-header';
+import { SearchInput } from '../../components/search-input/search-input';
+import { DataTable, CellTemplateDirective, TableColumn } from '../../components/data-table/data-table';
 
 interface TableRow {
   id: string;
@@ -13,11 +17,21 @@ interface TableRow {
 
 @Component({
   selector: 'app-tables',
-  imports: [],
+  imports: [Avatar, PageHeader, SearchInput, DataTable, CellTemplateDirective],
   templateUrl: './tables.component.html',
   styleUrl: './tables.component.scss'
 })
 export class TablesComponent {
+  columns: TableColumn[] = [
+    { key: 'id', label: 'ID', hideBelow: 'lg' },
+    { key: 'name', label: 'Cliente' },
+    { key: 'product', label: 'Produto', hideBelow: 'sm' },
+    { key: 'value', label: 'Valor' },
+    { key: 'date', label: 'Data', hideBelow: 'md' },
+    { key: 'status', label: 'Status' },
+    { key: 'action', label: 'Acao' },
+  ];
+
   rows: TableRow[] = [
     { id: '#4521', name: 'Lucas Ferreira', initials: 'LF', email: 'lucas@email.com', product: 'Método Expert Digital', value: 'R$ 497,00', date: '12 Mar 2025', status: 'Aprovado' },
     { id: '#4522', name: 'Ana Costa', initials: 'AC', email: 'ana@email.com', product: 'Mentoria Premium', value: 'R$ 2.997,00', date: '11 Mar 2025', status: 'Aprovado' },

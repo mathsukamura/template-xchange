@@ -13,10 +13,11 @@ import {
   ApexYAxis,
 } from 'ng-apexcharts';
 import { ThemeService } from '../../services/theme.service';
+import { PageHeader } from '../../components/page-header/page-header';
 
 @Component({
   selector: 'app-charts',
-  imports: [NgApexchartsModule],
+  imports: [NgApexchartsModule, PageHeader],
   templateUrl: './charts.component.html',
   styleUrl: './charts.component.scss'
 })

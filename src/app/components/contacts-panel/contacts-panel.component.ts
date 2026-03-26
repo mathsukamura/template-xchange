@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { CardContainer } from '../card-container/card-container';
 
 @Component({
   selector: 'app-contacts-panel',
-  imports: [],
+  imports: [CardContainer],
   templateUrl: './contacts-panel.component.html',
   styleUrl: './contacts-panel.component.scss'
 })

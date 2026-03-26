@@ -3,13 +3,13 @@
   <div class="hidden lg:flex items-center gap-2 text-xs text-gray-400 mb-2">
     <span>Projetos</span>
     <span>/</span>
-    <span>Design Boost Black 2025</span>
+    <span>Layout Xchange 2026</span>
     <span>/</span>
     <span class="text-gray-600 dark:text-gray-300">Dashboard</span>
   </div>
   <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
     <div class="flex items-center gap-3">
-      <h1 class="text-xl sm:text-2xl lg:text-5xl font-extrabold text-gray-900 dark:text-white">Design Boost Black 2025</h1>
+      <h1 class="text-xl sm:text-2xl lg:text-5xl font-extrabold text-gray-900 dark:text-white">Layout Xchange 2026</h1>
       <span class="px-2.5 py-0.5 bg-lime-accent/20 text-xs font-semibold text-gray-700 dark:text-lime-accent rounded-full">Ativo</span>
     </div>
     <div class="hidden lg:flex items-center gap-2 text-xs text-gray-400">
@@ -140,7 +140,7 @@
     <!-- Faturamento + Revenue side by side on mobile -->
     <div class="grid grid-cols-2 lg:grid-cols-1 gap-3">
       <!-- Faturamento -->
-      <div class="bg-dark-card dark:bg-white rounded-2xl p-4 lg:p-5 text-white dark:text-gray-900">
+      <app-card variant="inverted">
         <p class="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-wider font-medium mb-1">Faturamento mensal</p>
         <p class="text-xl lg:text-3xl font-extrabold tracking-tight leading-none">R$ 27.900</p>
         <div class="flex items-center gap-1 mt-2">
@@ -166,7 +166,7 @@
             [dataLabels]="revenueDataLabels"
           />
         </div>
-      </div>
+      </app-card>
 
       <!-- Mini stats card on mobile -->
       <div class="bg-white dark:bg-dark-lighter rounded-2xl p-4 lg:hidden">
@@ -190,26 +190,23 @@
         <p class="text-sm font-semibold text-gray-900 dark:text-white">Produtos</p>
         <button class="text-[11px] font-bold text-lime-accent hover:text-lime-accent-hover cursor-pointer transition-colors">Ver todos →</button>
       </div>
-      @for (product of products; track product.name; let i = $index) {
-        <div class="px-4 lg:px-5 py-2.5 lg:py-3 flex items-center justify-between border-b border-gray-50 dark:border-dark-card last:border-b-0 hover:bg-gray-50/50 dark:hover:bg-dark-card/50 transition-colors"
-          [class.hidden]="i >= 4"
-          [class.lg:flex]="i >= 4"
-        >
+      <app-data-table [columns]="productColumns" [data]="products" [showHeader]="false" [pageSize]="6">
+        <ng-template appCellTemplate="name" let-row>
           <div class="flex items-center gap-2.5 lg:gap-3">
-            <div class="w-8 h-8 lg:w-9 lg:h-9 bg-dark dark:bg-white rounded-lg lg:rounded-xl flex items-center justify-center text-[10px] font-bold text-white dark:text-gray-900 flex-shrink-0">
-              {{ product.initials }}
-            </div>
+            <app-avatar [initials]="row.initials" size="sm" shape="square" variant="inverted" />
             <div>
-              <p class="text-xs font-semibold text-gray-900 dark:text-white">{{ product.name }}</p>
-              <p class="text-[10px] text-gray-400 hidden sm:block">{{ product.category }}</p>
+              <p class="text-xs font-semibold text-gray-900 dark:text-white">{{ row.name }}</p>
+              <p class="text-[10px] text-gray-400 hidden sm:block">{{ row.category }}</p>
             </div>
           </div>
+        </ng-template>
+        <ng-template appCellTemplate="price" let-row>
           <div class="text-right">
-            <p class="text-xs font-bold text-gray-900 dark:text-white">{{ product.price }}</p>
-            <p class="text-[10px] text-gray-400 hidden sm:block">{{ product.sales }} vendas</p>
+            <p class="text-xs font-bold text-gray-900 dark:text-white">{{ row.price }}</p>
+            <p class="text-[10px] text-gray-400 hidden sm:block">{{ row.sales }} vendas</p>
           </div>
-        </div>
-      }
+        </ng-template>
+      </app-data-table>
     </div>
 
   </div>

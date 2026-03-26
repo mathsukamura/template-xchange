@@ -13,16 +13,24 @@ import {
   ApexYAxis,
 } from 'ng-apexcharts';
 import { ThemeService } from '../../services/theme.service';
+import { Avatar } from '../../components/avatar/avatar';
+import { DataTable, CellTemplateDirective, TableColumn } from '../../components/data-table/data-table';
+import { CardContainer } from '../../components/card-container/card-container';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [NgApexchartsModule],
+  imports: [NgApexchartsModule, Avatar, DataTable, CellTemplateDirective, CardContainer],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
   private theme = inject(ThemeService);
   get isDark() { return this.theme.isDark(); }
+
+  productColumns: TableColumn[] = [
+    { key: 'name', label: '' },
+    { key: 'price', label: '' },
+  ];
 
   activeTab = 'geral';
   tabs = ['Geral', 'Atrair', 'Preparar para venda', 'Vender'];
